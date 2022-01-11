@@ -11,7 +11,7 @@ class _GaleriaPageState extends State<GaleriaPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text("Imágenes")),
+        appBar: AppBar(title: Text("Galería de Imágenes")),
         body: Center(
             child: Column(children: <Widget>[
           SizedBox(height: 20.0),

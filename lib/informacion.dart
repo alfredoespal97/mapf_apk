@@ -12,19 +12,25 @@ class _InformationPageState extends State<InformationPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: CustomScrollView(slivers: <Widget>[
-      SliverAppBar(
-          pinned: true,
-          snap: false,
-          floating: true,
-          expandedHeight: 200.0,
-          flexibleSpace: FlexibleSpaceBar(
-            title: Text("Información", style: TextStyle(color: Colors.black)),
-            background: Image.asset(
-              'assets/mapa.PNG',
-              fit: BoxFit.fill,
-            ),
-          ))
+        body: CustomScrollView(
+            slivers: <Widget>[
+              SliverAppBar(
+                  pinned: true,
+                  snap: true,
+                  floating: true,
+                  expandedHeight: 200.0,
+                  flexibleSpace: FlexibleSpaceBar(
+                    title: const Text("Información", style: TextStyle(color: Colors.grey)),
+                    background: Image.asset(
+                      'assets/mapa.PNG',
+                      fit: BoxFit.fill,
+                    ),
+                  ),
+
+              ),
+              const SliverFillRemaining(child: Center(
+                child: Text("Esta pagina es para la informacion"),
+              ),),
     ]));
   }
 }
