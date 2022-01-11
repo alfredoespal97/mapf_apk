@@ -4,6 +4,7 @@ import 'galeria.dart';
 import 'home.dart';
 import 'informacion.dart';
 import 'mapa.dart';
+import 'scanner.dart';
 import 'virtual.dart';
 
 void main() {
@@ -30,6 +31,7 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/informacion', page: () =>const InformationPage()),
         GetPage(name: '/mapa', page: () =>const VirtualPage()),
         GetPage(name: '/virtual', page: () =>const MapaPage()),
+        GetPage(name: '/scanner', page: () =>const ScannerPage()),
       ],
     );
   }
