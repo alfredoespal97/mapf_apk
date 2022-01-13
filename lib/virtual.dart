@@ -72,7 +72,7 @@ class _VirtualPageState extends State<VirtualPage> {
              widget: hotspotButton(icon: Icons.remove_red_eye, onPressed: () {}),
            ),
          ],
-         child: Image.asset('assets/panorama2.jpg'),
+         child: Image.asset('assets/panorama3.jpg'),
        ),
       floatingActionButton: FloatingActionButton(
           child: Icon(Icons.map),

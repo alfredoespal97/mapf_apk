@@ -19,10 +19,10 @@ class _MyHomePageState extends State<MyHomePage> {
 
   final titles = ["Galería de Imágenes", "QR Scanner", "Recorrido Virtual", "Información"];
   final subtitles = [
-    "En esta sección encontrarás bellas\n imágenes en las que podrás regresar\n al pasado para disfrutar de esta \n maravillosa construcción.",
-    "Te invitamos a conocer más acerca \nde la historia, la arquitectura y \n nuestros horios de visitas. Disfrute\n conociendo más acerca de la cultura cienfueguera.",
-    "Te invitamos a conocer más acerca \nde la historia, la arquitectura y \n nuestros horios de visitas. Disfrute\n conociendo más acerca de la cultura cienfueguera.",
-    "Te invitamos a conocer más acerca \nde la historia, la arquitectura y \n nuestros horios de visitas. Disfrute\n conociendo más acerca de la cultura cienfueguera.",
+    "En esta sección encontrarás bellas imágenes en las que podrás regresar al pasado para disfrutar de esta maravillosa construcción.",
+    "Te invitamos a conocer más acerca de la historia, la arquitectura y nuestros horios de visitas. Disfrute conociendo más acerca de la cultura cienfueguera.",
+    "Te invitamos a conocer más acerca de la historia, la arquitectura y nuestros horios de visitas. Disfrute conociendo más acerca de la cultura cienfueguera.",
+    "Te invitamos a conocer más acerca de la historia, la arquitectura y nuestros horarios de visitas. Disfrute conociendo más acerca de la cultura cienfueguera.",
   ];
   final icons = [Icons.image, Icons.qr_code_scanner, Icons.remove_red_eye,Icons.info];
 
@@ -77,35 +77,6 @@ class _MyHomePageState extends State<MyHomePage> {
                           )
                       ),
                     );
-//                    return Card(
-//                        elevation: 5,
-//                        margin: EdgeInsets.all(6),
-//                        color: Theme.of(context).primaryColor,
-//                        child: ListTile(
-//                            onTap: (){
-//                              switch (index){
-//                                case 0:
-//                                  Get.to(GaleriaPage());
-//                                  break;
-//                                case 1:
-//                                  Get.to(ScannerPage());
-//                                  break;
-//                                case 2:
-//                                  Get.to(VirtualPage());
-//                                  break;
-//                                case 3:
-//                                  Get.to(InformationPage());
-//                                  break;
-//                              }
-//                            },
-//                            title: Text(titles[index],style: TextStyle(color: Colors.white,fontSize: 25),),
-//                            subtitle: Text(subtitles[index],style: TextStyle(color: Colors.white)),
-//                            leading: CircleAvatar(
-//                              backgroundColor: Theme.of(context).primaryColor,
-//                              child:Icon(icons[index]) ,
-//                            )
-//                        )
-//                    );
                   }
               ),
             ),
@@ -115,66 +86,4 @@ class _MyHomePageState extends State<MyHomePage> {
       );
   }
 
-
-
-//  SingleChildScrollView(
-//  child: new Column(children: <Widget>[
-//  Container(
-//  decoration: BoxDecoration(
-//  borderRadius: BorderRadius.all(Radius.circular(20.0)),
-//  color: Theme.of(context).primaryColor,
-//  ),
-//  child: Column(children: <Widget>[
-//  Row(children: <Widget>[
-//  Image.asset('assets/light.png'),
-//  Text(" Galería",
-//  style: TextStyle(color: Colors.white, fontSize: 40.0)),
-//  IconButton(onPressed: (){
-//  Get.to(GaleriaPage());
-//  }, icon: const Icon(Icons.arrow_right_alt),
-//  iconSize: 32.0,),
-//  ])
-//  ]),
-//  ),
-//  SizedBox(height: 30.0),
-//  Container(
-//  //padding: EdgeInsets.all(20.0),
-//  decoration: BoxDecoration(
-//  borderRadius: BorderRadius.all(Radius.circular(20.0)),
-//  color: Theme.of(context).primaryColor,
-//  ),
-//  child: Column(children: <Widget>[
-//  Row(children: <Widget>[
-//  Image.asset('assets/light.png'),
-//  Text(" Información",
-//  style: TextStyle(color: Colors.white, fontSize: 40.0)),
-//  IconButton(
-//  iconSize: 32.0,
-//  onPressed: (){
-//  Get.to(InformationPage());
-//  }, icon: const Icon(Icons.arrow_right_alt)),
-//  ])
-//  ]),
-//  ),
-//  SizedBox(height: 30.0),
-//  Container(
-//  decoration: BoxDecoration(
-//  borderRadius: BorderRadius.all(Radius.circular(20.0)),
-//  color: Theme.of(context).primaryColor,
-//  ),
-//  child: Column(children: <Widget>[
-//  Row(children: <Widget>[
-//  Image.asset('assets/light.png'),
-//  Text(" Recorrido Virtual",
-//  style: TextStyle(color: Colors.white, fontSize: 30.0)),
-//  IconButton(
-//  iconSize: 32.0,
-//  onPressed: (){
-//  Get.to(VirtualPage());
-//  // Navigator.of(context).push(MaterialPageRoute(builder: (context)=>VirtualPage()));
-//  }, icon: const Icon(Icons.arrow_right_alt)),
-//  ])
-//  ]),
-//  ),
-//  ])),
 }

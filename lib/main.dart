@@ -7,6 +7,13 @@ import 'mapa.dart';
 import 'scanner.dart';
 import 'virtual.dart';
 
+final List<String> imageList = [
+  'assets/img1.jpg',
+  'assets/img2.jpg',
+  'assets/img3.jpg',
+  'assets/img4.jpg',
+];
+
 void main() {
   runApp(const MyApp());
 }

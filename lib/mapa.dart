@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:panorama/panorama.dart';
 import 'dart:io';
 import 'package:flutter/material.dart';
-
 import 'virtual.dart';
 //import 'package:cached_network_image/cached_network_image.dart';
 

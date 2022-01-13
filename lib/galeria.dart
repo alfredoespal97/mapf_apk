@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:photo_view/photo_view.dart';
+import 'package:photo_view/photo_view_gallery.dart';
 
 class GaleriaPage extends StatefulWidget {
   const GaleriaPage({Key? key}) : super(key: key);
@@ -8,29 +10,56 @@ class GaleriaPage extends StatefulWidget {
 }
 
 class _GaleriaPageState extends State<GaleriaPage> {
+
+  final imageList = [
+    'assets/img1.jpg',
+    'assets/img2.jpg',
+    'assets/img3.jpg',
+    'assets/img4.jpg',
+  ];
+
+  final salasList = [
+    'Recibidor',
+    'Etnografia',
+    'Comedor',
+    'Salón',
+    'Dormitorio',
+    'Atrapasueños',
+    'Baño museable',
+    'Artes Visuales',
+    'Música',
+    'Artesania',
+    'Polivalente',
+    'Corredor',
+    'Área interactiva para débiles visuales',
+    'Acceso a Pergola, Bar, Mirador',
+  ];
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(title: Text("Galería de Imágenes")),
-        body: Center(
-            child: Column(children: <Widget>[
-          SizedBox(height: 20.0),
-          Container(
-            margin: const EdgeInsets.all(50.0),
-            decoration: BoxDecoration(
-                color: Theme.of(context).primaryColor, borderRadius: BorderRadius.circular(20.0)),
-            //padding: const EdgeInsets.all(10.0),
-            child: ClipRRect(
-                borderRadius: BorderRadius.circular(20.0),
-                child: Image.asset(
-                  'assets/img4.jpg',
-                  fit: BoxFit.fill,
-                )),
+        body: GridView.builder(
+          physics: NeverScrollableScrollPhysics(),
+          shrinkWrap: true,
+          scrollDirection: Axis.vertical,
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
           ),
-          SizedBox(height: 20.0),
-          Text('cnskacnkckscksckscks '
-              'csjcshcscjcjsjc'
-              'csbcsjcbjsc')
-        ])));
+          itemCount: imageList.length,
+          itemBuilder: (context, index) {
+            return Container(
+              decoration: BoxDecoration(
+                  color: Colors.blue,
+                  borderRadius: BorderRadius.all(Radius.circular(20))
+              ),
+              margin: EdgeInsets.all(10),
+              child: Image.asset(imageList[index]),
+                //Text(salasList.elementAt(index)
+            );
+          },
+        )
+    );
   }
 }
