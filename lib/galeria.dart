@@ -10,7 +10,6 @@ class GaleriaPage extends StatefulWidget {
 }
 
 class _GaleriaPageState extends State<GaleriaPage> {
-
   final imageList = [
     'assets/img1.jpg',
     'assets/img2.jpg',
@@ -35,31 +34,61 @@ class _GaleriaPageState extends State<GaleriaPage> {
     'Acceso a Pergola, Bar, Mirador',
   ];
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(title: Text("Galería de Imágenes")),
-        body: GridView.builder(
-          physics: NeverScrollableScrollPhysics(),
-          shrinkWrap: true,
-          scrollDirection: Axis.vertical,
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
+        body: Container(
+            child: Column(children: <Widget>[
+          Container(
+            height: 80,
+            child: ListView.builder(
+                itemCount: imageList.length,
+                shrinkWrap: true,
+                padding: EdgeInsets.symmetric(horizontal: 24),
+                scrollDirection: Axis.horizontal,
+                itemBuilder: (context, index) {
+                  return Container(
+                    margin: EdgeInsets.only(right: 4),
+                    child: Stack(
+                      children: <Widget>[
+                        ClipRRect(
+                          child: Image.asset(imageList[index],
+                              height: 50, width: 100, fit: BoxFit.cover),
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        Container(
+                          color: Colors.black26,
+                          height: 50,
+                          width: 100,
+                          alignment: Alignment.center,
+                          child: Text(salasList[index],
+                              style: TextStyle(color: Colors.white)),
+                        )
+                      ],
+                    ),
+                  );
+                }),
           ),
-          itemCount: imageList.length,
-          itemBuilder: (context, index) {
-            return Container(
-              decoration: BoxDecoration(
-                  color: Colors.blue,
-                  borderRadius: BorderRadius.all(Radius.circular(20))
-              ),
-              margin: EdgeInsets.all(10),
-              child: Image.asset(imageList[index]),
+          GridView.builder(
+            physics: NeverScrollableScrollPhysics(),
+            shrinkWrap: true,
+            scrollDirection: Axis.vertical,
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+            ),
+            itemCount: imageList.length,
+            itemBuilder: (context, index) {
+              return Container(
+                decoration: BoxDecoration(
+                    color: Colors.blue,
+                    borderRadius: BorderRadius.all(Radius.circular(20))),
+                margin: EdgeInsets.all(10),
+                child: Image.asset(imageList[index]),
                 //Text(salasList.elementAt(index)
-            );
-          },
-        )
-    );
+              );
+            },
+          ),
+        ])));
   }
 }
