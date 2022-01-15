@@ -4,8 +4,8 @@ import 'package:panorama/panorama.dart';
 import 'dart:io';
 import 'package:flutter/material.dart';
 
-import 'home.dart';
-import 'mapa.dart';
+import 'package:mapf/views/home.dart';
+import 'package:mapf/views/mapa.dart';
 //import 'package:cached_network_image/cached_network_image.dart';
 
 class VirtualPage extends StatefulWidget {
@@ -49,6 +49,9 @@ class _VirtualPageState extends State<VirtualPage> {
        // leading: Icon(Icons.arrow_back)
       ),
        body: Panorama(
+         croppedArea: Rect.fromLTWH(2533.0, 1265.0, 5065.0, 2533.0),
+         croppedFullWidth: 10132.0,
+         croppedFullHeight: 5066.0,
          hotspots: [
            Hotspot(
              latitude: -15.0,
@@ -72,7 +75,7 @@ class _VirtualPageState extends State<VirtualPage> {
              widget: hotspotButton(icon: Icons.remove_red_eye, onPressed: () {}),
            ),
          ],
-         child: Image.asset('assets/panorama3.jpg'),
+         child: Image.asset('assets/pano.jpeg'),
        ),
       floatingActionButton: FloatingActionButton(
           child: Icon(Icons.map),

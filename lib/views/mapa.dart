@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:panorama/panorama.dart';
-import 'dart:io';
-import 'package:flutter/material.dart';
-import 'virtual.dart';
-//import 'package:cached_network_image/cached_network_image.dart';
+import 'package:mapf/views/virtual.dart';
 
 class MapaPage extends StatefulWidget {
   const MapaPage({Key? key}) : super(key: key);
@@ -47,7 +43,7 @@ class _MapaPageState extends State<MapaPage> {
       body: Center(
           child: Stack(
             children: <Widget>[
-              Positioned(top: 0,left: 0, child: Image.asset('assets/mapa_planta2.jpg')),
+              Positioned(top: 0,left: 0, child: Image.asset('assets/mapa_museo.jpg')),
               Positioned(top: 40,left: 8, child: IconButton(onPressed: (){
                 Navigator.of(context).push(MaterialPageRoute(builder: (context)=>VirtualPage()));
               }, icon: Icon(Icons.remove_red_eye))),
