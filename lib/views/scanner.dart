@@ -20,6 +20,11 @@ class _ScannerPageState extends State<ScannerPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: Column());
+    return Scaffold(
+        body: Column(
+      children: [
+        Text("Scanner Result"),
+      ],
+    ));
   }
 }

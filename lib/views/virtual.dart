@@ -49,16 +49,16 @@ class _VirtualPageState extends State<VirtualPage> {
        // leading: Icon(Icons.arrow_back)
       ),
        body: Panorama(
-         croppedArea: Rect.fromLTWH(2533.0, 1265.0, 5065.0, 2533.0),
-         croppedFullWidth: 10132.0,
-         croppedFullHeight: 5066.0,
+        // croppedArea: Rect.fromLTWH(1265.0, 633.0, 2532.0, 1265.0),
+        // croppedFullWidth: 5066.0,
+        // croppedFullHeight: 2533.0,
          hotspots: [
            Hotspot(
              latitude: -15.0,
              longitude: -129.0,
-             width: 90,
-             height: 75,
-             widget: hotspotButton(text: "Next scene", icon: Icons.open_in_browser, onPressed: () => setState(() => {})),
+             width: 110,
+             height: 100,
+             widget: hotspotButton(text: "Siguiente habitación", icon: Icons.open_in_browser, onPressed: () => setState(() => {})),
            ),
            Hotspot(
              latitude: -42.0,
@@ -75,7 +75,7 @@ class _VirtualPageState extends State<VirtualPage> {
              widget: hotspotButton(icon: Icons.remove_red_eye, onPressed: () {}),
            ),
          ],
-         child: Image.asset('assets/pano.jpeg'),
+         child: Image.asset('assets/panorama2.jpg'),
        ),
       floatingActionButton: FloatingActionButton(
           child: Icon(Icons.map),

@@ -1,4 +1,4 @@
-import 'package:barcode_scan2/barcode_scan2.dart';
+//import 'package:barcode_scan2/barcode_scan2.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mapf/views/galeria.dart';
@@ -66,7 +66,8 @@ class _MyHomePageState extends State<MyHomePage> {
                               Get.to(GaleriaPage());
                               break;
                             case 1:
-                              handleQrScanner();
+                              // handleQrScanner();
+                              Get.to(ScannerPage());
                               break;
                             case 2:
                               Get.to(VirtualPage());
@@ -94,11 +95,11 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-  handleQrScanner() async {
-    var result = await BarcodeScanner.scan();
+  // handleQrScanner() async {
+  //   var result = await BarcodeScanner.scan();
 
-    Get.to(ScannerPage(), arguments: result.rawContent);
-  }
+  //   Get.to(ScannerPage(), arguments: result.rawContent);
+  // }
 }
 
 class Splash extends StatelessWidget {

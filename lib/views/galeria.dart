@@ -130,25 +130,6 @@ class _GaleriaPageState extends State<GaleriaPage> {
                         );
                       }),
                 ),
-//          GridView.builder(
-//            physics: NeverScrollableScrollPhysics(),
-//            shrinkWrap: true,
-//            scrollDirection: Axis.vertical,
-//            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-//              crossAxisCount: 2,
-//            ),
-//            itemCount: imageList.length,
-//            itemBuilder: (context, index) {
-//              return Container(
-//                decoration: BoxDecoration(
-//                    color: Colors.blue,
-//                    borderRadius: BorderRadius.all(Radius.circular(20))),
-//                margin: EdgeInsets.all(10),
-//                child: Image.asset(imageList[index]),
-//                //Text(salasList.elementAt(index)
-//              );
-//            },
-//          ),
                 Container(
                   padding: EdgeInsets.symmetric(horizontal: 16),
                   child: GridView.count(
