@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:photo_view/photo_view.dart';
 import 'package:photo_view/photo_view_gallery.dart';
@@ -34,10 +35,11 @@ class _ImagePageState extends State<ImagePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Galería de Imágenes")),
+      appBar: AppBar(title: Text("Galería de Imágenes"),centerTitle: true,),
       body: Container(
         child: PhotoView(
-          imageProvider: AssetImage(imagen),
+          imageProvider: NetworkImage(imagen),
+          //AssetImage(imagen),
           heroAttributes: PhotoViewHeroAttributes(tag: imagen),
         )
 // PhotoViewGallery.builder(

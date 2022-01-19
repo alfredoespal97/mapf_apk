@@ -1,10 +1,12 @@
 //import 'package:barcode_scan2/barcode_scan2.dart';
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mapf/views/galeria.dart';
 import 'package:mapf/views/informacion.dart';
 import 'package:mapf/views/virtual.dart';
-
+import 'package:http/http.dart' as http;
 import 'package:mapf/views/mapa.dart';
 import 'package:mapf/views/scanner.dart';
 //import 'package:cached_network_image/cached_network_image.dart';
@@ -17,6 +19,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+
+
   final titles = [
     "Galería de Imágenes",
     "QR Scanner",
@@ -35,6 +39,17 @@ class _MyHomePageState extends State<MyHomePage> {
     Icons.remove_red_eye,
     Icons.info
   ];
+
+  late List? recibidor,etnografia,comedor,salon,dormitorio,atrapasuennos,banno,av,musica,artesania,polivalente,corredor,terraza,escaleras,exteriores,sala_inter ;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    if (mounted) {
+      fetchSalasData();
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -63,7 +78,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         onTap: () {
                           switch (index) {
                             case 0:
-                              Get.to(GaleriaPage());
+                              Get.to(GaleriaPage(),arguments: sala_inter);
                               break;
                             case 1:
                               // handleQrScanner();
@@ -92,6 +107,38 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ],
       ),
+    );
+  }
+
+  //Funcion para llamar datos de las salas del museo
+  void fetchSalasData() async {
+    var url = Uri.https(
+        "raw.githubusercontent.com", "/alfredoespal97/mapf_json/main/mapf_db.json");
+    await http.get(url).then((value) {
+      print(value.statusCode);
+      if (value.statusCode == 200) {
+        var decodedJsonData = jsonDecode(value.body);
+        av = decodedJsonData['artes_visuales'];
+        artesania = decodedJsonData['artesania'];
+        atrapasuennos = decodedJsonData['atrapasueños'];
+        banno = decodedJsonData['banno'];
+        comedor = decodedJsonData['comedor'];
+        corredor = decodedJsonData['corredor'];
+        dormitorio = decodedJsonData['dormitorio'];
+        escaleras = decodedJsonData['escaleras'];
+        exteriores = decodedJsonData['exteriores'];
+        etnografia = decodedJsonData['etnografia'];
+        musica = decodedJsonData['musica'];
+        polivalente = decodedJsonData['polivalente'];
+        recibidor = decodedJsonData['recibidor'];
+        sala_inter = decodedJsonData['sala_interactiva'];
+        salon = decodedJsonData['sala_principal'];
+        terraza = decodedJsonData['terraza'];
+        setState(() {});
+      } else {
+        print('Request failed with status: ${value.statusCode}.');
+      }
+    }
     );
   }
 
