@@ -13,7 +13,7 @@ class _InformationPageState extends State<InformationPage> {
   String optionSelected="";
 
   final itemList = [
-    'Presentación',
+    'Inicio',
     'Historia',
     'Interés',
   ];
@@ -41,8 +41,7 @@ class _InformationPageState extends State<InformationPage> {
       default:
             return Text(" Horario \n De martes a sábados de 10:00 AM – 6:00 PM \n Domingos 9:00 AM - 1:00 PM \n Precio – 5 CUP por persona \n Ubicación: Ave.54 esq.Calle 25, Cienfuegos. Cuba");
   }
-  
-    
+
   }
 
   @override
@@ -51,58 +50,44 @@ class _InformationPageState extends State<InformationPage> {
     height=size.height;
     width=size.width;
     return Scaffold(
-        appBar: AppBar(
-            centerTitle: true,
-            title: Text("Información")),
-        body: Scrollbar(
-          child: Column(
-              mainAxisAlignment:MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              verticalDirection: VerticalDirection.down,
-              children:[
-                SizedBox(height: 20,),
-//                    Container(
-//                      height: 80,
-//                      child: ListView.builder(
-//                          itemCount: itemList.length,
-//                          shrinkWrap: true,
-//                          padding: EdgeInsets.symmetric(horizontal: 24),
-//                          scrollDirection: Axis.horizontal,
-//                          itemBuilder: (context, index) {
-//                            return Container(
-//                              margin: EdgeInsets.only(right: 4),
-//                              child: InkWell(
-//                                onTap: (){
-//                                  setState(() {
-//                                    id=index;
-//                                  });
-//                                },
-//                                child: Stack(
-//                                  children: <Widget>[
-//                                    Container(
-//                                      decoration: BoxDecoration(
-//                                        borderRadius: BorderRadius.circular(8),
-//                                        color: Theme.of(context).primaryColor,
-//                                      ),
-//                                      height: 50,
-//                                      width: 100,
-//                                      alignment: Alignment.center,
-//                                      child: Text(itemList[index],
-//                                          style: TextStyle(color: Colors.white, fontSize: 16)),
-//                                    )
-//                                  ],
-//                                ),
-//                              ),
-//                            );
-//                          }),
-//                    ),
-                Container(
-                    width: double.infinity,
-                    child: Wrap(
-                        alignment: WrapAlignment.spaceEvenly,
-                        children: itemList.map((e) => buildOpciones(e))
-                            .toList())),
-                SizedBox(height: 10,),
+//        appBar: AppBar(
+//            centerTitle: true,
+//            title: Text("Información")),
+        body:  CustomScrollView(
+          slivers: <Widget>[
+            SliverAppBar(
+              pinned: true,
+              snap: true,
+              floating: true,
+              expandedHeight: 200.0,
+              flexibleSpace: FlexibleSpaceBar(
+                title: const Text("Información"),
+                centerTitle: true,
+                background: Image.asset(
+                  'assets/mapa.png',
+                  fit: BoxFit.fill,
+                  color: Colors.white.withOpacity(0.8), colorBlendMode: BlendMode.modulate,
+                ),
+              ),
+            ),
+            // If the main content is a list, use SliverList instead.
+            SliverFillRemaining(
+              child:Column(
+                  mainAxisAlignment:MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  verticalDirection: VerticalDirection.down,
+                  children:[
+//                    ClipRRect(
+//                        borderRadius: BorderRadius.only(bottomRight: Radius.circular(20),bottomLeft: Radius.circular(20)),
+//                        child: Image.asset('assets/mapa.png')),
+                    SizedBox(height: 20,),
+                    Container(
+                        width: double.infinity,
+                        child: Wrap(
+                            alignment: WrapAlignment.spaceEvenly,
+                            children: itemList.map((e) => buildOpciones(e))
+                                .toList())),
+                    SizedBox(height: 10,),
                     Expanded(
                         child: SingleChildScrollView(
                           scrollDirection: Axis.vertical,
@@ -110,16 +95,48 @@ class _InformationPageState extends State<InformationPage> {
                           child:  contentInformation(id,height*0.7,width),
                         )
                     ),
-//                SingleChildScrollView(
-//                  scrollDirection: Axis.vertical,
-//                  padding: EdgeInsets.only(left: 15,right: 15),
-//                  child:  contentInformation(id,height*0.7,width),
-//                ),
-
-              ]
-          ),
-
+                    //contentInformation(id,height*0.7,width),
+                  ]
+              ),
+            ),
+          ],
         ),
+
+//        Scrollbar(
+//          child: Column(
+//              mainAxisAlignment:MainAxisAlignment.start,
+//              crossAxisAlignment: CrossAxisAlignment.center,
+//              verticalDirection: VerticalDirection.down,
+//              children:[
+//                ClipRRect(
+//                    borderRadius: BorderRadius.only(bottomRight: Radius.circular(20),bottomLeft: Radius.circular(20)),
+//                    child: Image.asset('assets/mapa.png')),
+//                SizedBox(height: 20,),
+//                Container(
+//                    width: double.infinity,
+//                    child: Wrap(
+//                        alignment: WrapAlignment.spaceEvenly,
+//                        children: itemList.map((e) => buildOpciones(e))
+//                            .toList())),
+//                SizedBox(height: 10,),
+//                Expanded(
+//                        child: SingleChildScrollView(
+//                          scrollDirection: Axis.vertical,
+//                          padding: EdgeInsets.only(left: 15,right: 15),
+//                          child:  contentInformation(id,height*0.7,width),
+//                        )
+//                ),
+//                //contentInformation(id,height*0.7,width),
+////                SingleChildScrollView(
+////                  scrollDirection: Axis.vertical,
+////                  padding: EdgeInsets.only(left: 15,right: 15),
+////                  child:  contentInformation(id,height*0.7,width),
+////                ),
+//
+//              ]
+//          ),
+//
+//        ),
     );
   }
 

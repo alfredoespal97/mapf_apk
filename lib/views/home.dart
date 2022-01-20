@@ -28,10 +28,10 @@ class _MyHomePageState extends State<MyHomePage> {
     "Información"
   ];
   final subtitles = [
-    "En esta sección encontrarás bellas imágenes en las que podrás regresar al pasado para disfrutar de esta maravillosa construcción.",
-    "Te invitamos a conocer más acerca de la historia, la arquitectura y nuestros horios de visitas. Disfrute conociendo más acerca de la cultura cienfueguera.",
-    "Te invitamos a conocer más acerca de la historia, la arquitectura y nuestros horios de visitas. Disfrute conociendo más acerca de la cultura cienfueguera.",
-    "Te invitamos a conocer más acerca de la historia, la arquitectura y nuestros horarios de visitas. Disfrute conociendo más acerca de la cultura cienfueguera.",
+    "Sección repleta de bellas imágenes en las que podrás regresar al pasado.",
+    "Descubra historia por medio de un código.",
+    "Visite nuestras instalaciones de forma remota.",
+    "Conozca acerca de nuestra historia y las visitas al museo",
   ];
   final icons = [
     Icons.image,
@@ -61,7 +61,7 @@ class _MyHomePageState extends State<MyHomePage> {
               child: ClipRRect(
                   borderRadius:
                       BorderRadius.only(bottomRight: Radius.circular(50)),
-                  child: Image.asset('assets/foto_principal.jpg'))),
+                  child: Image.asset('assets/inicio.jpg'))),
           Expanded(
             child: ListView.builder(
                 itemCount: titles.length,
