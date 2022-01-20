@@ -45,8 +45,8 @@ class _ScannerPageState extends State<ScannerPage> {
             alignment: Alignment.center,
             children: <Widget>[
               buildQrView(context),
-              Positioned(top: 10, child: buildResult()),
-              Positioned(bottom: 10, child: buildControlButtons()),
+              Positioned(bottom: 10, child: buildResult()),
+              Positioned(top: 10, child: buildControlButtons()),
             ],
           ),
         ),
