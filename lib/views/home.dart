@@ -9,6 +9,7 @@ import 'package:mapf/views/virtual.dart';
 import 'package:http/http.dart' as http;
 import 'package:mapf/views/mapa.dart';
 import 'package:mapf/views/scanner.dart';
+import 'package:mapf/widgets/custom_dialog_box.dart';
 //import 'package:cached_network_image/cached_network_image.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -22,13 +23,13 @@ class _MyHomePageState extends State<MyHomePage> {
 
 
   final titles = [
-    "Galería de Imágenes",
+    "Galería",
     "QR Scanner",
     "Recorrido Virtual",
     "Información"
   ];
   final subtitles = [
-    "Sección repleta de bellas imágenes en las que podrás regresar al pasado.",
+    "Descubra las bellezas que guarda el Museo de Artes Placio Ferrer.",
     "Descubra historia por medio de un código.",
     "Visite nuestras instalaciones de forma remota.",
     "Conozca acerca de nuestra historia y las visitas al museo",
@@ -51,16 +52,19 @@ class _MyHomePageState extends State<MyHomePage> {
     }
   }
 
+
+
   @override
   Widget build(BuildContext context) {
     var height= MediaQuery.of(context).size.height ;
+
 
     return Scaffold(
       body: Column(
         children: [
           Container(
               height: height*0.45,
-              padding: const EdgeInsets.all(15.0),
+              padding: const EdgeInsets.symmetric(vertical: 15),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.only(bottomRight: Radius.circular(50),bottomLeft: Radius.circular(50)),
                 image: DecorationImage(
@@ -69,7 +73,26 @@ class _MyHomePageState extends State<MyHomePage> {
                   fit: BoxFit.fill,
                 ),
               ),
-
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  IconButton(icon: Icon(Icons.info,color: Colors.white,),
+                  onPressed: (){
+                    showDialog(context: context,
+                        builder: (BuildContext context){
+                          return CustomDialogBox(
+                            title: "Museo de las Artes Palacio Ferrer",
+                            descriptions: "Autores: María de Jesús Ríos García,\n Ing Alfredo Rafael Espinosa Palenque",
+                            text: "Salir",
+                            img: Image.asset("assets/logo2.png"),
+                          );
+                        }
+                    );
+                  }
+                    ),
+                ],
+              ),
               ),
           Expanded(
             child: ListView.builder(
@@ -170,8 +193,8 @@ class Splash extends StatelessWidget {
           lightMode ? const Color(0xffe1f5fe) : const Color(0xff042a49),
       body: Center(
           child: lightMode
-              ? Image.asset('assets/pantalla_inicial.png')
-              : Image.asset('assets/pantalla_inicial.png')),
+              ? Image.asset('assets/pantalla_inicial.png',fit: BoxFit.fill,)
+              : Image.asset('assets/pantalla_inicial.png',fit: BoxFit.fill,)),
     );
   }
 }

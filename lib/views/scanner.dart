@@ -3,6 +3,8 @@ import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:mapf/views/scanner_result.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 //import 'package:cached_network_image/cached_network_image.dart';
 
@@ -21,6 +23,24 @@ class _ScannerPageState extends State<ScannerPage> {
   final qrKey = GlobalKey(debugLabel: 'QR');
   QRViewController? controller;
   Barcode? barcode;
+  late bool flag;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    barcode=null;
+    flag=false;
+    Fluttertoast.showToast(
+        msg: "Esta sección requiere conexión a internet",
+        toastLength: Toast.LENGTH_LONG,
+        gravity: ToastGravity.BOTTOM,
+        timeInSecForIosWeb: 1,
+        backgroundColor: Colors.black26,
+        textColor: Colors.white,
+        fontSize: 16.0
+    );
+  }
 
   @override
   void dispose() {
@@ -38,6 +58,8 @@ class _ScannerPageState extends State<ScannerPage> {
     controller!.resumeCamera();
   }
 
+
+
   @override
   Widget build(BuildContext context) => SafeArea(
         child: Scaffold(
@@ -45,7 +67,13 @@ class _ScannerPageState extends State<ScannerPage> {
             alignment: Alignment.center,
             children: <Widget>[
               buildQrView(context),
-              Positioned(bottom: 10, child: buildResult()),
+              Positioned(bottom: 60, child: buildResult()),
+//              Positioned(bottom: 10, child: ElevatedButton(
+//                onPressed: (){
+//                  Navigator.push(context,new MaterialPageRoute(builder: (context)=>ScannerResult(this.barcode!.code.toString())));
+//                },
+//                child: Text("Procesar Resultado"),
+//              )),
               Positioned(top: 10, child: buildControlButtons()),
             ],
           ),
@@ -67,7 +95,17 @@ class _ScannerPageState extends State<ScannerPage> {
   void onQRViewCreated(QRViewController controller) {
     setState(() => this.controller = controller);
 
-    controller.scannedDataStream.listen((barcode) => this.barcode = barcode);
+    //controller.scannedDataStream.listen((barcode) => this.barcode = barcode);
+    controller.scannedDataStream.listen((barcode) {
+      setState(() {
+        this.barcode = barcode;
+        this.flag=true;
+        if(this.flag){
+          Navigator.push(context,new MaterialPageRoute(builder: (context)=>ScannerResult(this.barcode!.code.toString())));
+        }
+        //Navigator.push(context,new MaterialPageRoute(builder: (context)=>ScannerResult(this.barcode!.code.toString())));
+      });
+    });
   }
 
   Widget buildResult() => Container(
@@ -77,7 +115,7 @@ class _ScannerPageState extends State<ScannerPage> {
           color: Colors.white24,
         ),
         child: Text(
-          barcode != null ? 'Resultado : ${barcode!.code}' : 'Código QR',
+          barcode != null ? 'Escaner completado' : 'Código QR',
           maxLines: 3,
         ),
       );
