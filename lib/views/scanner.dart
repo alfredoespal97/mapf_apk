@@ -1,6 +1,6 @@
 import 'dart:developer';
 import 'dart:io';
-
+import 'package:http/http.dart' as http;
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -68,12 +68,22 @@ class _ScannerPageState extends State<ScannerPage> {
             children: <Widget>[
               buildQrView(context),
               Positioned(bottom: 60, child: buildResult()),
-//              Positioned(bottom: 10, child: ElevatedButton(
-//                onPressed: (){
-//                  Navigator.push(context,new MaterialPageRoute(builder: (context)=>ScannerResult(this.barcode!.code.toString())));
-//                },
-//                child: Text("Procesar Resultado"),
-//              )),
+              Positioned(bottom: 10, child: ElevatedButton(
+                onPressed: (){
+                  showDialog(context: context,
+                      builder: (BuildContext context){
+                        return CustomDialogBox(
+                          title: "Museo de las Artes Palacio Ferrer",
+                          descriptions: "Autores: María de Jesús Ríos García,\n Ing Alfredo Rafael Espinosa Palenque",
+                          text: "Salir",
+                          img: Image.asset("assets/logo2.png"),
+                        );
+                      }
+                  );
+                  //Navigator.push(context,new MaterialPageRoute(builder: (context)=>ScannerResult(this.barcode!.code.toString())));
+                },
+                child: Text("Procesar Resultado"),
+              )),
               Positioned(top: 10, child: buildControlButtons()),
             ],
           ),
@@ -99,10 +109,10 @@ class _ScannerPageState extends State<ScannerPage> {
     controller.scannedDataStream.listen((barcode) {
       setState(() {
         this.barcode = barcode;
-        this.flag=true;
-        if(this.flag){
-          Navigator.push(context,new MaterialPageRoute(builder: (context)=>ScannerResult(this.barcode!.code.toString())));
-        }
+//        this.flag=true;
+//        if(this.flag){
+//          Navigator.push(context,new MaterialPageRoute(builder: (context)=>ScannerResult(this.barcode!.code.toString())));
+//        }
         //Navigator.push(context,new MaterialPageRoute(builder: (context)=>ScannerResult(this.barcode!.code.toString())));
       });
     });
@@ -165,4 +175,19 @@ class _ScannerPageState extends State<ScannerPage> {
           ],
         ),
       );
+
+
+    void fetchQRData() async {
+      var url = Uri.https('my-json-server.typicode.com',barcode!.code.toString());
+      await http.get(url).then((value) {
+        print(value.statusCode);
+        if (value.statusCode == 200) {
+          var decodedJsonData = jsonDecode(value.body);
+          result = decodedJsonData['description'];
+          setState(() {});
+        } else {
+          print('Request failed with status: ${value.statusCode}.');
+        }
+      });
+    }
 }
