@@ -53,15 +53,24 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    var height= MediaQuery.of(context).size.height ;
+
     return Scaffold(
       body: Column(
         children: [
           Container(
-              //padding: const EdgeInsets.all(15.0),
-              child: ClipRRect(
-                  borderRadius:
-                      BorderRadius.only(bottomRight: Radius.circular(50)),
-                  child: Image.asset('assets/inicio.jpg'))),
+              height: height*0.45,
+              padding: const EdgeInsets.all(15.0),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.only(bottomRight: Radius.circular(50),bottomLeft: Radius.circular(50)),
+                image: DecorationImage(
+                  alignment: Alignment.center,
+                  image: ExactAssetImage('assets/foto_principal2.png'),
+                  fit: BoxFit.fill,
+                ),
+              ),
+
+              ),
           Expanded(
             child: ListView.builder(
                 itemCount: titles.length,
