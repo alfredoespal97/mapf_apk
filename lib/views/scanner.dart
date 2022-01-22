@@ -69,10 +69,22 @@ class _ScannerPageState extends State<ScannerPage> {
             alignment: Alignment.center,
             children: <Widget>[
               buildQrView(context),
-              Positioned(bottom: 60, child: buildResult()),
+              //Positioned(bottom: 60, child: buildResult()),
               Positioned(bottom: 10, child: ElevatedButton(
                 onPressed: (){
-                  Navigator.push(context,new MaterialPageRoute(builder: (context)=>ScannerResult(this.barcode!.code.toString())));
+                  if(barcode!=null){
+                    Navigator.push(context,new MaterialPageRoute(builder: (context)=>ScannerResult(this.barcode!.code.toString())));
+                  }else{
+                  Fluttertoast.showToast(
+                  msg: "Debe seleccionar un área con código QR",
+                  toastLength: Toast.LENGTH_LONG,
+                  gravity: ToastGravity.BOTTOM,
+                  timeInSecForIosWeb: 1,
+                  backgroundColor: Colors.red,
+                  textColor: Colors.white,
+                  fontSize: 16.0
+                  );
+                  }
                 },
                 child: Text("Procesar Resultado"),
               )),
