@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
 import 'package:http/http.dart' as http;
@@ -5,6 +6,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:mapf/views/scanner_result.dart';
+import 'package:mapf/widgets/custom_dialog_box.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 //import 'package:cached_network_image/cached_network_image.dart';
 
@@ -24,6 +26,7 @@ class _ScannerPageState extends State<ScannerPage> {
   QRViewController? controller;
   Barcode? barcode;
   late bool flag;
+  String? result;
 
   @override
   void initState() {
@@ -59,7 +62,6 @@ class _ScannerPageState extends State<ScannerPage> {
   }
 
 
-
   @override
   Widget build(BuildContext context) => SafeArea(
         child: Scaffold(
@@ -70,17 +72,7 @@ class _ScannerPageState extends State<ScannerPage> {
               Positioned(bottom: 60, child: buildResult()),
               Positioned(bottom: 10, child: ElevatedButton(
                 onPressed: (){
-                  showDialog(context: context,
-                      builder: (BuildContext context){
-                        return CustomDialogBox(
-                          title: "Museo de las Artes Palacio Ferrer",
-                          descriptions: "Autores: María de Jesús Ríos García,\n Ing Alfredo Rafael Espinosa Palenque",
-                          text: "Salir",
-                          img: Image.asset("assets/logo2.png"),
-                        );
-                      }
-                  );
-                  //Navigator.push(context,new MaterialPageRoute(builder: (context)=>ScannerResult(this.barcode!.code.toString())));
+                  Navigator.push(context,new MaterialPageRoute(builder: (context)=>ScannerResult(this.barcode!.code.toString())));
                 },
                 child: Text("Procesar Resultado"),
               )),
@@ -177,17 +169,5 @@ class _ScannerPageState extends State<ScannerPage> {
       );
 
 
-    void fetchQRData() async {
-      var url = Uri.https('my-json-server.typicode.com',barcode!.code.toString());
-      await http.get(url).then((value) {
-        print(value.statusCode);
-        if (value.statusCode == 200) {
-          var decodedJsonData = jsonDecode(value.body);
-          result = decodedJsonData['description'];
-          setState(() {});
-        } else {
-          print('Request failed with status: ${value.statusCode}.');
-        }
-      });
-    }
+
 }

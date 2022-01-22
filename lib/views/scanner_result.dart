@@ -28,11 +28,17 @@ class _ScannerResultState extends State<ScannerResult> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text('Resultado del Escaner'),
+      ),
       body: Center(
-        child: result != null
-            ? Text(result!)
-            : const Center(
-          child: CircularProgressIndicator(),
+        child: Container(
+          padding: EdgeInsets.symmetric(horizontal: 20),
+          child: result != null
+              ? Text(result!)
+              : const Center(
+            child: CircularProgressIndicator(),
+          ),
         )
       ),
     );
