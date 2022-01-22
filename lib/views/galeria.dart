@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:mapf/views/image_view.dart';
 import 'package:http/http.dart' as http;
@@ -33,6 +34,7 @@ class _GaleriaPageState extends State<GaleriaPage> {
       sala_inter;
 
   var list = Get.arguments;
+
 
   late List<String> imageList = [
     'assets/sala_int.jpg',
@@ -98,6 +100,15 @@ class _GaleriaPageState extends State<GaleriaPage> {
     if (mounted) {
       fetchSalasData();
     }
+    Fluttertoast.showToast(
+        msg: "Esta sección requiere conexión a internet",
+        toastLength: Toast.LENGTH_LONG,
+        gravity: ToastGravity.BOTTOM,
+        timeInSecForIosWeb: 1,
+        backgroundColor: Colors.black26,
+        textColor: Colors.white,
+        fontSize: 16.0
+    );
     // imageList=list;
   }
 
@@ -259,7 +270,12 @@ class _GaleriaPageState extends State<GaleriaPage> {
   List<String> llenarListadoImagenes(int id) {
     switch (id) {
       case 0:
-        return imageList = llenarImageList(sala_inter!);
+       // return imageList = llenarImageList(sala_inter!);
+        imageList.clear();
+        imageList.add("https://raw.githubusercontent.com/alfredoespal97/mapf_json/main/assets/sala_interactiva/int1.jpg");
+        imageList.add("https://raw.githubusercontent.com/alfredoespal97/mapf_json/main/assets/sala_interactiva/int2.jpg");
+        imageList.add("https://raw.githubusercontent.com/alfredoespal97/mapf_json/main/assets/sala_interactiva/int3.jpg");
+        return imageList;
         break;
       case 1:
         return imageList = llenarImageList(recibidor!);
