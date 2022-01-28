@@ -50,6 +50,14 @@ class _MyHomePageState extends State<MyHomePage> {
     if (mounted) {
       fetchSalasData();
     }
+    sala_inter=[
+      {"id":1,
+        "img":"https://raw.githubusercontent.com/alfredoespal97/mapf_json/main/assets/sala_interactiva/int1.jpg"},
+      {"id":2,
+        "img":"https://raw.githubusercontent.com/alfredoespal97/mapf_json/main/assets/sala_interactiva/int2.jpg"},
+      {"id":3,
+        "img":"https://raw.githubusercontent.com/alfredoespal97/mapf_json/main/assets/sala_interactiva/int3.jpg"}
+    ];
   }
 
 
