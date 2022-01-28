@@ -64,7 +64,7 @@ class _InformationPageState extends State<InformationPage> {
                 title: const Text("Información"),
                 centerTitle: true,
                 background: Image.asset(
-                  'assets/mapa.png',
+                  'assets/mapa.PNG',
                   fit: BoxFit.fill,
                   color: Colors.white.withOpacity(0.8), colorBlendMode: BlendMode.modulate,
                 ),
