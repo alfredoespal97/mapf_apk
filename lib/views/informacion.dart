@@ -59,7 +59,7 @@ class _InformationPageState extends State<InformationPage> {
               pinned: true,
               snap: true,
               floating: true,
-              expandedHeight: 200.0,
+              expandedHeight: height/3,
               flexibleSpace: FlexibleSpaceBar(
                 title: const Text("Información"),
                 centerTitle: true,
